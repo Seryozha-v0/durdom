@@ -1,0 +1,133 @@
+.profileMini {
+    display: flex;
+    align-items: center;
+
+    &__img {
+        width: 48px;
+        height: 48px;
+        border-radius: 100%;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(10, 11, 15, 0.10);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__name {
+        margin-left: 8px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    &__menu {
+        position: relative;
+        margin-left: 10px;
+    }
+
+    &__toggle {
+        width: 24px;
+        height: 24px;
+        transition: .4s transform;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        &_open {
+            transform: rotate(180deg);
+        }
+    }
+
+    &__optionsBar {
+        display: block;
+        position: absolute;
+        top: calc(100% + 20px);
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 4px;
+        background: var(--white);
+        box-shadow: 0 -5px 20px rgba($color: #000000, $alpha: .30);
+        z-index: 5;
+        min-width: 260px;
+        opacity: 0;
+        animation: open 1s both;
+    }
+
+    @keyframes open {
+        to {
+            opacity: 1;
+        }
+    }
+
+    &__wrap {
+        position: relative;
+        padding: 16px;
+
+        &:before {
+            content: '';
+            position: absolute;
+            display: block;
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 18px solid transparent;
+            border-right: 18px solid transparent;
+            border-bottom: 15px solid #fff;
+            z-index: 2;
+        }
+    }
+
+    &__option {
+        position: relative;
+        padding-left: 32px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--gray-700);
+
+        a {
+            color: var(--gray-700);
+            text-decoration: none;
+        }
+
+        &:hover {
+            a {
+                color: var(--blue-900);
+            }
+            .profileMini {
+                &__icons svg path {
+                    fill: var(--blue-900);
+                }
+            }
+        }
+    }
+
+    &__option + &__option {
+        margin-top: 20px;
+    }
+
+    &__icons {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+
+        svg {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            
+            path {
+                fill: var(--gray-400);
+            }
+        }
+    }
+
+
+}

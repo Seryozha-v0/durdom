@@ -1,0 +1,93 @@
+:root {
+    --black: #171A36;
+    --blue-900: #0051EE;
+    --blue-gradient: linear-gradient(180deg, #0054F6 0%, #200DFF 100%);
+    --gray-200: #C4C6D4;
+    --gray-400: #737697;
+    --gray-700: #4C4E67;
+    --white: #ffffff
+}
+
+body {
+    font-family: "TTFirsNeuse", sans-serif;
+    font-weight: 400;
+    color: var(--black);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5px;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 60px;
+}
+
+h2 {
+    font-weight: 800;
+    font-size: 32px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+h4 {
+    font-size: 21px;
+}
+
+.p1 {
+    font-size: 18px;
+}
+
+.p2 {
+    font-size: 14px;
+}
+
+.p2_bold {
+    font-weight: 500
+}
+
+.p3 {
+    font-size: 14px;
+}
+
+.p3_bold {
+    font-weight: 500;
+}
+
+.p4 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-weight: 600;
+        font-size: 26px;
+    }
+
+    h2 {
+        font-weight: 800;
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 21px;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+
+    .p1 {
+        font-size: 18px;
+    }
+
+    .p4 {
+        font-size: 12px;
+        font-weight: 400;
+    }
+}

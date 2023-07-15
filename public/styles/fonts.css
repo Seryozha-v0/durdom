@@ -1,0 +1,63 @@
+/* TT Firs Neuse */
+@font-face {
+    font-family: "TTFirsNeuse";
+    src: url("./../fonts/TTFirsNeuse/TTFirsNeue-Regular.ttf") format("TrueType"),
+         url("./../fonts/TTFirsNeuse/TTFirsNeue-Regular.woff") format("woff"),
+         url("./../fonts/TTFirsNeuse/TTFirsNeue-Regular.woff2") format("woff2");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "TTFirsNeuse";
+    src: url("./../fonts/TTFirsNeuse/TTFirsNeue-Medium.ttf") format("TrueType"),
+         url("./../fonts/TTFirsNeuse/TTFirsNeue-Medium.woff") format("woff"),
+         url("./../fonts/TTFirsNeuse/TTFirsNeue-Medium.woff2") format("woff2");
+    font-weight: 500;
+}
+@font-face {
+    font-family: "TTFirsNeuse";
+    src: url("./../fonts/TTFirsNeuse/TTFirsNeue-DemiBold.ttf") format("TrueType"),
+         url("./../fonts/TTFirsNeuse/TTFirsNeue-DemiBold.woff") format("woff"),
+         url("./../fonts/TTFirsNeuse/TTFirsNeue-DemiBold.woff2") format("woff2");
+    font-weight: 600;
+}
+@font-face {
+    font-family: "TTFirsNeuse";
+    src: url("./../fonts/TTFirsNeuse/TTFirsNeue-Bold.ttf") format("TrueType"),
+         url("./../fonts/TTFirsNeuse/TTFirsNeue-Bold.woff") format("woff"),
+         url("./../fonts/TTFirsNeuse/TTFirsNeue-Bold.woff2") format("woff2");
+    font-weight: 800;
+}
+
+/* Avenir Next Cyr */
+@font-face {
+    font-family: "AvenirNextCyr";
+    src: url("./../fonts/AvenirNextCyr/AvenirNextCyr-Regular.ttf") format("TrueType"),
+         url("./../fonts/AvenirNextCyr/AvenirNextCyr-Regular.woff") format("woff"),
+         url("./../fonts/AvenirNextCyr/AvenirNextCyr-Regular.woff2") format("woff2");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "AvenirNextCyr";
+    src: url("./../fonts/AvenirNextCyr/AvenirNextCyr-Bold.ttf") format("TrueType"),
+         url("./../fonts/AvenirNextCyr/AvenirNextCyr-Bold.woff") format("woff"),
+         url("./../fonts/AvenirNextCyr/AvenirNextCyr-Bold.woff2") format("woff2");
+    font-weight: 800;
+}
+
+/* Neue Machina */
+@font-face {
+    font-family: "NeueMachina";
+    src: url("./../fonts/NeueMachina/NeueMachina-Regular.ttf") format("TrueType"),
+         url("./../fonts/NeueMachina/NeueMachina-Regular.woff") format("woff"),
+         url("./../fonts/NeueMachina/NeueMachina-Regular.woff2") format("woff2");
+    font-weight: 400;
+}
+
+/* Sharp Grotesk */
+@font-face {
+    font-family: "SharpGrotesk";
+    src: url("./../fonts/SharpGrotesk/SharpGroteskMedium-Regular.ttf") format("TrueType"),
+         url("./../fonts/SharpGrotesk/SharpGroteskMedium-Regular.woff") format("woff"),
+         url("./../fonts/SharpGrotesk/SharpGroteskMedium-Regular.woff2") format("woff2");
+    font-weight: 400;
+}
