@@ -8,6 +8,7 @@ import { ReactComponent as BoockmarkIcon } from './../../img/icons/boockmark-sta
 import { ReactComponent as ProfileSettingsIcon } from './../../img/icons/edit-profile.svg';
 
 import './profileMini.scss';
+import Dashboard from '../dashboard/Dashboard';
 
 const ProfileMini = ({
     avatar,
@@ -31,43 +32,41 @@ const ProfileMini = ({
                 </div>
 
                 {profileMenuOpen && (
-                    <div className="profileMini__optionsBar">
-                        <div className="profileMini__wrap">
-                            <div className="profileMini__option">
-                                <div className="profileMini__icons">
-                                    <MyProfileIcon />
-                                </div>
-                                <a href="#">Мой профиль</a>
+                    <Dashboard spClass='profileMini__optionsBar'>
+                        <div className="profileMini__option">
+                            <div className="profileMini__icons">
+                                <MyProfileIcon />
                             </div>
-                            <div className="profileMini__option">
-                                <div className="profileMini__icons">
-                                    <MyProjectsIcon />
-                                </div>
-                                <a href="#">Мои проекты</a>
-                            </div>
-                            <div className="profileMini__option">
-                                <div className="profileMini__icons">
-                                    <DraftsIcon />
-                                </div>
-                                <a href="#">Черновики</a>
-                            </div>
-                            <div className="profileMini__option">
-                                <div className="profileMini__icons">
-                                    <BoockmarkIcon />
-                                </div>
-                                <a href="#">Закладки</a>
-                            </div>
-                            <div className="profileMini__option">
-                                <div className="profileMini__icons">
-                                    <ProfileSettingsIcon />
-                                </div>
-                                <a href="#">Настройки профиля</a>
-                            </div>
-                            <div className="profileMini__option">
-                                <a href="#">Выйти</a>
-                            </div>
+                            <a href="#">Мой профиль</a>
                         </div>
-                    </div>
+                        <div className="profileMini__option">
+                            <div className="profileMini__icons">
+                                <MyProjectsIcon />
+                            </div>
+                            <a href="#">Мои проекты</a>
+                        </div>
+                        <div className="profileMini__option">
+                            <div className="profileMini__icons">
+                                <DraftsIcon />
+                            </div>
+                            <a href="#">Черновики</a>
+                        </div>
+                        <div className="profileMini__option">
+                            <div className="profileMini__icons">
+                                <BoockmarkIcon />
+                            </div>
+                            <a href="#">Закладки</a>
+                        </div>
+                        <div className="profileMini__option">
+                            <div className="profileMini__icons">
+                                <ProfileSettingsIcon />
+                            </div>
+                            <a href="#">Настройки профиля</a>
+                        </div>
+                        <div className="profileMini__option">
+                            <a href="#">Выйти</a>
+                        </div>
+                    </Dashboard>
                 )}
             </div>
         </div>

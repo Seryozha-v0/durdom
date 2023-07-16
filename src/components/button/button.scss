@@ -2,9 +2,9 @@
     display: flex;
     align-items: center;
     border: none;
-    border-radius: 4px;
+    border-radius: var(--radius);
     padding: 17px 40px 17px 24px;
-    box-shadow: 0px 4px 12px 0px rgba(10, 11, 15, 0.10);
+    box-shadow: var(--shadow);
     font-weight: 500;
 
     &__icon {
