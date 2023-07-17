@@ -1,19 +1,22 @@
+import clsx from 'clsx';
 import './button.scss';
 
-const Button = ({ icon, name, type, ...props }) => {
-    const types = ['standart', 'white'];
+const Button = ({ icon, variant, spClass, children, ...props }) => {
+    const variants = ['standart', 'white'];
     let styleType = 'standart';
 
-    if (types.includes(type)) {
-        styleType = type;
+    if (variants.includes(variant)) {
+        styleType = variant;
     }
 
     return (
-        <button class={`btn btn_${styleType}`} {...props}>
-            <div class="btn__icon">
-                {icon}
-            </div>
-            {name}
+        <button class={clsx("btn", `btn_${styleType}`, spClass)} {...props}>
+            {icon && (
+                <div class="btn__icon">
+                    {icon}
+                </div>
+            )}
+            {children}
         </button>
     )
 }

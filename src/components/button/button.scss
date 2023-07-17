@@ -1,11 +1,13 @@
 .btn {
     display: flex;
     align-items: center;
+    justify-content: center;
     border: none;
     border-radius: var(--radius);
-    padding: 17px 40px 17px 24px;
+    padding: 17px 24px;
     box-shadow: var(--shadow);
     font-weight: 500;
+    min-width: 160px;
 
     &__icon {
         width: 24px;

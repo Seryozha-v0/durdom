@@ -2,7 +2,7 @@ import notification from './../../img/icons/notifiction.svg';
 import man2 from './../../img/avatars/man2.jpg';
 
 import './notifications.scss';
-import Dashboard from '../dashboard/Dashboard';
+import Dashboard from '../Dashboard/Dashboard';
 
 const Notification = ({
     isChecked,

@@ -8,7 +8,7 @@ import { ReactComponent as BoockmarkIcon } from './../../img/icons/boockmark-sta
 import { ReactComponent as ProfileSettingsIcon } from './../../img/icons/edit-profile.svg';
 
 import './profileMini.scss';
-import Dashboard from '../dashboard/Dashboard';
+import Dashboard from '../Dashboard/Dashboard';
 
 const ProfileMini = ({
     avatar,

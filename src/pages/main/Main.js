@@ -1,4 +1,4 @@
-import Button from '../../components/button/Button';
+import Button from '../../components/Button/Button';
 import CardsList from '../../components/cardsList/CardsList';
 import Search from '../../components/search/Search';
 import { ReactComponent as CreateTeamIcon } from './../../img/icons/create-team.svg';
@@ -20,15 +20,13 @@ const Main = () => {
                             <div className="present__btn">
                                 <Button
                                     icon={<CreateTeamIcon />}
-                                    name='Create a team'
-                                />
+                                >Create a team</Button>
                             </div>
                             <div className="present__btn">
                                 <Button
                                     icon={<FindTeamIcon />}
-                                    name='Find a project'
                                     type='white'
-                                />
+                                >Find a project</Button>
                             </div>
                         </div>
                         <div className="present__art">
