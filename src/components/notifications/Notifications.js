@@ -2,29 +2,23 @@ import notification from './../../img/icons/notifiction.svg';
 import man2 from './../../img/avatars/man2.jpg';
 
 import './notifications.scss';
-import Dashboard from '../Dashboard/Dashboard';
+import Dashboard from '../dashboard/Dashboard';
 
 const Notification = ({
     isChecked,
     notificationBarOpen,
-    setNotificationBarOpen
+    onOpen
 }) => {
     return (
         <div class="notifications">
             <div class={`notifications__icon ${!isChecked ? "notifications__icon_new" : ""}`}
-                onClick={() => setNotificationBarOpen(!notificationBarOpen)}
+                onClick={onOpen}
             >
                 <img src={notification} alt="Notifications" />
             </div>
 
             {notificationBarOpen && (
                 <Dashboard spClass='notifications__bar'>
-                        <div class="notifications__scrollbar">
-                            <div class="notifications__scrollbar_wrap">
-                                <div class="notifications__scrollbar_thumb"></div>
-                            </div>
-                        </div>
-
                         <div class="notifications__messages">
                             {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i, item) => (
                                 <div class="notifications__item" key={i}>

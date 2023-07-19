@@ -1,4 +1,4 @@
-import Button from '../../components/Button/Button';
+import Button from '../../components/button/Button';
 import CardsList from '../../components/cardsList/CardsList';
 import Search from '../../components/search/Search';
 import { ReactComponent as CreateTeamIcon } from './../../img/icons/create-team.svg';

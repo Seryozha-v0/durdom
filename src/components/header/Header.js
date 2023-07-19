@@ -11,6 +11,20 @@ const Header = () => {
     const [notificationBarOpen, setNotificationBarOpen] = useState(false);
     const [profileMenuOpen, setProfileMenuOpen] = useState(false);
 
+    const handleNotificationBarOpen = () => {
+        if (profileMenuOpen) {
+            setProfileMenuOpen(false);
+        }
+        setNotificationBarOpen(!notificationBarOpen);
+    }
+
+    const handleProfileMenuOpen = () => {
+        if (notificationBarOpen) {
+            setNotificationBarOpen(false);
+        }
+        setProfileMenuOpen(!profileMenuOpen);
+    }
+
     return (
         <header class='header'>
             <div class='container'>
@@ -33,14 +47,14 @@ const Header = () => {
                             <Notifications 
                                 isChecked={true}
                                 notificationBarOpen={notificationBarOpen}
-                                setNotificationBarOpen={setNotificationBarOpen}
+                                onOpen={handleNotificationBarOpen}
                             />
                         </div>
                         <div class="header__profileMini">
                             <ProfileMini
                                 name='Michael'
                                 profileMenuOpen={profileMenuOpen}
-                                setProfileMenuOpen={setProfileMenuOpen}
+                                onOpen={handleProfileMenuOpen}
                             />
                         </div>
                     </div>

@@ -1,13 +1,15 @@
-import Button from '../Button/Button';
+import clsx from 'clsx';
+import Button from '../button/Button';
 import AlertIcon from './../../img/icons/alert-decagram.svg';
 import CloseIcon from './../../img/icons/close.svg';
 
 import './offers.scss';
 
-const Offers = () => {
+const Offers = ({isOpen, onOpen, onClose}) => {
+
     return (
-        <div class="offers">
-            <div class="offers__show">
+        <div class={clsx('offers', {'offers_active': isOpen})}>
+            <div class="offers__show" onClick={onOpen}>
                 <div class="offers__icon">
                     <img src={AlertIcon} alt="DurDom" />
                 </div>
@@ -18,7 +20,7 @@ const Offers = () => {
             <div class="offers__form">
                 <div class="offers__header">
                     Предложения и пожелания
-                    <div className="offers__close">
+                    <div className="offers__close" onClick={onClose}>
                         <img src={CloseIcon} alt="Close" />
                     </div>
                 </div>

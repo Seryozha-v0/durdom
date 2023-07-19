@@ -8,13 +8,13 @@ import { ReactComponent as BoockmarkIcon } from './../../img/icons/boockmark-sta
 import { ReactComponent as ProfileSettingsIcon } from './../../img/icons/edit-profile.svg';
 
 import './profileMini.scss';
-import Dashboard from '../Dashboard/Dashboard';
+import Dashboard from '../dashboard/Dashboard';
 
 const ProfileMini = ({
     avatar,
     name,
     profileMenuOpen,
-    setProfileMenuOpen
+    onOpen
 }) => {
     return (
         <div class='profileMini'>
@@ -26,7 +26,7 @@ const ProfileMini = ({
             </div>
             <div className="profileMini__menu">
                 <div className={`profileMini__toggle ${profileMenuOpen ? 'profileMini__toggle_open' : ''}`}
-                    onClick={() => setProfileMenuOpen(!profileMenuOpen)}
+                    onClick={onOpen}
                 >
                     <img src={dropDown} alt="Profile menu" />
                 </div>
