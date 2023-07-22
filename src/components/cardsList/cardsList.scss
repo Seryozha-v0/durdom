@@ -10,33 +10,12 @@
         font-weight: 500;
     }
 
-    &__filters-wrap {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    &__filter {
-        margin: 0 18px;
-        padding-bottom: 5px;
-        border-bottom: 1px dashed var(--gray-400);
-        color: var(--gray-400);
-
-        &_active {
-            color: var(--blue-900);
-            border: none;
-        }
-    }
-
     &__wrap {
         margin-top: 37px;
-        columns: 3;
+        // columns: 3;
     }
 
     &__item {
-        break-inside: avoid;
-        max-width: 378px;
-        margin-bottom: 24px;
         padding: 16px 24px;
         background: var(--white);
         border-radius: var(--radius);
@@ -55,6 +34,8 @@
     &__descr {
         margin: 12px 0 0;
         color: var(--gray-400);
+        font-weight: 600;
+        font-size: 14px;
     }
 
     &__meta-wrap {

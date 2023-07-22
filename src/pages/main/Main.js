@@ -37,7 +37,9 @@ const Main = () => {
             </section>
             <section class="sec-mainSearch">
                 <div class="container">
-                    <Search />
+                    <Search 
+                        short={true}
+                    />
                 </div>
             </section>
             <section class="sec-mainProjects">

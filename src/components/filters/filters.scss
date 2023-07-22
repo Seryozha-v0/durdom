@@ -1,0 +1,46 @@
+.filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__field {
+        position: relative;
+        padding-bottom: 5px;
+        margin: 0 18px;
+        color: var(--gray-400);
+        cursor: pointer;
+        transition: .4s;
+
+        &:first-child {
+            margin-left: 0;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            border-bottom: 1px dashed var(--gray-400);
+            left: 0;
+            bottom: 1px;
+            transition: .4s width, .4s left;
+        }
+
+        &_bold {
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        &_active {
+            color: var(--blue-900);
+
+            &:before {
+                width: 0;
+                left: 50%;
+            }
+        }
+    }
+}

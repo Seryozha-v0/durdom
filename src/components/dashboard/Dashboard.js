@@ -25,7 +25,16 @@ const Dashboard = ({ spClass, children, ...props }) => {
     return (
         <div class={clsx("dashboard", spClass)} {...props}>
             <div class="dashboard__wrap">
-                {children}
+                {showScrollBar ? (
+                    <div class="dashboard__scroll">
+                        {children}
+                    </div>
+                ) : (
+                    <>
+                        {children}
+                    </>
+                )}
+
             </div>
             {showScrollBar && (
                 <div class="dashboard__scrollbar">

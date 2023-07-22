@@ -1,0 +1,62 @@
+.adminProjects {
+    padding: 60px 0;
+
+    &__search {
+        margin-top: 25px;
+    }
+
+    &__list {
+        margin-top: 37px;
+    }
+}
+
+.projectsList {
+    &__item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid var(--gray-200)
+    }
+    &__title {
+        flex-shrink: 0;
+        font-size: 24px;
+        font-weight: 600;
+        width: 180px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    &__descr {
+        margin-left: 25px;
+        font-size: 14px;
+        font-weight: 400;
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    &__options {
+        position: relative;
+        margin-left: 26px;
+    }
+
+    &__optionsIcon {
+        width: 24px;
+        height: 24px;
+        transform: rotate(90deg);
+        cursor: pointer;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    &__option {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--gray-400);
+        margin: 8px 0;
+    }
+}

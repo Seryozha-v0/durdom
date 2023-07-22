@@ -24,6 +24,25 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 5px;
+
+    &_row {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__section {
+        width: 80%;
+    }
+
+    &__aside {
+        max-width: 20%;
+        margin-left: 20px;
+        flex-shrink: 0;
+    }
+}
+
+.sec-container {
+    max-width: 752px;
 }
 
 h1 {
