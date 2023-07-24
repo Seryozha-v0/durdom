@@ -9,17 +9,40 @@ const Dashboard = ({ spClass, children, ...props }) => {
     const handleScrollBar = (el) => {
         const clientHeight = el.clientHeight;
         const scrollHeight = el.scrollHeight;
-        console.log(clientHeight);
-        console.log(scrollHeight);
+        
         if (scrollHeight != clientHeight) {
             return setShowScrollBar(true);
         }
+
         setShowScrollBar(false);
     }
 
+    const handleScroll = (e) => {
+        const top = e.target.scrollTop;
+        const height = e.target.scrollHeight;
+        const wrapHeight = e.target.offsetHeight;
+
+        const thumb = document.getElementsByClassName("dashboard__scrollbar_thumb")[0];
+        thumb.setAttribute('style', `height: ${wrapHeight / height * 100}%;transform: translate(-50%,${top / wrapHeight * 100}%)`)
+    }
+    
     useEffect(() => {
-        const el = document.getElementsByClassName("dashboard__wrap")[0];
-        handleScrollBar(el);
+        const el = document.getElementsByClassName("dashboard__scroll")[0];
+        
+        if (el) {
+            console.log(el.scrollTop);
+            const height = el.scrollHeight;
+            const wrapHeight = el.offsetHeight;
+            const thumb = document.getElementsByClassName("dashboard__scrollbar_thumb")[0];
+            thumb.setAttribute('style', `height: ${wrapHeight / height * 100}%`);
+
+            el.addEventListener('scroll', handleScroll);
+        }
+    }, [showScrollBar]);
+
+    useEffect(() => {
+        const wrap = document.getElementsByClassName("dashboard__wrap")[0];
+        handleScrollBar(wrap);
     }, []);
 
     return (
