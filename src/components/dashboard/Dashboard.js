@@ -9,8 +9,9 @@ const Dashboard = ({ spClass, children, ...props }) => {
     const handleScrollBar = (el) => {
         const clientHeight = el.clientHeight;
         const scrollHeight = el.scrollHeight;
+        console.log(clientHeight, scrollHeight);
         
-        if (scrollHeight != clientHeight) {
+        if (scrollHeight != clientHeight + 1) {
             return setShowScrollBar(true);
         }
 
@@ -30,7 +31,6 @@ const Dashboard = ({ spClass, children, ...props }) => {
         const el = document.getElementsByClassName("dashboard__scroll")[0];
         
         if (el) {
-            console.log(el.scrollTop);
             const height = el.scrollHeight;
             const wrapHeight = el.offsetHeight;
             const thumb = document.getElementsByClassName("dashboard__scrollbar_thumb")[0];

@@ -62,9 +62,9 @@ const Admin = () => {
     const [arrProjects, setArrProjects] = useState([]);
     const [statusFilter, setStatusFilter] = useState('all');
 
-    const [projectOptionOpen, setProjectOptionsOpen] = useState(false);
+    const [projectOptionOpen, setProjectOptionsOpen] = useState({isOpen: false, index: ''});
     const handleProjectOptionsOpen = (i) => {
-        setProjectOptionsOpen(i);
+        setProjectOptionsOpen({isOpen: !projectOptionOpen.isOpen, index: i});
     }
 
     useEffect(() => {
@@ -98,7 +98,7 @@ const Admin = () => {
                                                 <div class="projectsList__optionsIcon" onClick={() => handleProjectOptionsOpen(i)}>
                                                     <img src={OptionsIcon} alt="options" />
                                                 </div>
-                                                {projectOptionOpen === i && (
+                                                {projectOptionOpen.index === i && projectOptionOpen.isOpen && (
                                                     <Dashboard spClass="projectsList__options-wrap">
                                                         <div className="projectsList__option">Отклонить</div>
                                                         <div className="projectsList__option">Одобрить</div>
