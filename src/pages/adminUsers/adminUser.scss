@@ -1,0 +1,65 @@
+.adminUsers {
+    &__search {
+        margin-top: 25px;
+    }
+
+    &__list {
+        margin-top: 37px;
+    }
+}
+
+.usersList {
+    &__item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid var(--gray-200);
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--gray-400);
+    }
+
+    &__avatar {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        margin-right: 10px;
+        border-radius: 100%;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__name {
+        color: var(--black);
+        margin-right: 10px;
+    }
+
+    &__nick {
+        color: var(--blue-900);
+        margin-right: 10px;
+    }
+
+    &__email {
+        color: var(--blue-900);
+        margin-right: 10px;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+
+            &:hover {
+                color: #E22A01;
+            }
+        }
+    }
+
+    &__activity {
+        font-weight: 600;
+        margin-right: 10px;
+    }
+}

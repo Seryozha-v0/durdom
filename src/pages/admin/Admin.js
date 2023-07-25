@@ -8,68 +8,36 @@ import './admin.scss';
 import { useEffect, useState } from 'react';
 import Dashboard from '../../components/dashboard/Dashboard';
 
-const filters = [
-    {
-        name: 'Все',
-        value: 'all'
-    },
-    {
-        name: 'Опубликованые',
-        value: 'published'
-    },
-    {
-        name: 'Ожидают публикации',
-        value: 'waiting'
-    },
-    {
-        name: 'Отклоненные',
-        value: 'reject'
-    },
-];
-
-const test = [
-    {
-        name: 'Говорит физик',
-        text: 'Информационный ресурс для школьников и студентов',
-        comments: '32',
-        date: '17 мая, 2019',
-        status: 'published',
-    },
-    {
-        name: 'FurniHome',
-        text: 'Портал мебели и товаров для дома',
-        comments: '29',
-        date: '17 мая, 2019',
-        status: 'waiting',
-    },
-    {
-        name: 'Оптическая передача энергии',
-        text: 'Наша технология - это беспроводная передача энергии из одного места в другое, используя лазерное излучение.',
-        comments: '29',
-        date: '16 мая, 2019',
-        status: 'waiting',
-    },
-    {
-        name: 'Говорит физик',
-        text: 'Информационный ресурс для школьников и студентов',
-        comments: '32',
-        date: '17 мая, 2019',
-        status: 'reject',
-    },
-]
+import { filters, test, asideMenu } from '../../data/adminData';
 
 const Admin = () => {
     const [arrProjects, setArrProjects] = useState([]);
     const [statusFilter, setStatusFilter] = useState('all');
 
-    const [projectOptionOpen, setProjectOptionsOpen] = useState({isOpen: false, index: ''});
+    const [projectOptionOpen, setProjectOptionsOpen] = useState({ isOpen: false, index: '' });
     const handleProjectOptionsOpen = (i) => {
-        setProjectOptionsOpen({isOpen: !projectOptionOpen.isOpen, index: i});
+        setProjectOptionsOpen({ isOpen: !projectOptionOpen.isOpen, index: i });
     }
 
+    const handleStatusFilter = (el) => {
+        const status = el.target.dataset.value;
+
+        const targetActive = document.getElementsByClassName('filters__field_active')[0];
+        targetActive.classList.remove('filters__field_active');
+        el.target.classList.add('filters__field_active');
+
+        setStatusFilter(status);
+    };
+
     useEffect(() => {
-        setArrProjects(test);
-    })
+        let arr = test;
+
+        if (statusFilter != 'all') {
+            arr = test.filter((project) => project.status === statusFilter);
+        }
+
+        setArrProjects(arr);
+    }, [statusFilter])
 
     return (
         <div class="container container_row">
@@ -80,6 +48,7 @@ const Admin = () => {
                             <Filters
                                 fields={filters}
                                 inSection={true}
+                                func={handleStatusFilter}
                             />
                         </div>
                         <div class="adminProjects__search">
@@ -118,8 +87,15 @@ const Admin = () => {
             </div>
             <div class="container__aside">
                 <aside>
-                    <nav className="asideMenu">
-                        123
+                    <nav class="asideMenu">
+                        {asideMenu.map((item, i) => (
+                            <div key={i} class="asideMenu__item">
+                                <a href="#" class="asideMenu__icon">
+                                    <img src={item.icon} alt={item.title} />
+                                </a>
+                                <a href="#">{item.title}</a>
+                            </div>
+                        ))}
                     </nav>
                 </aside>
             </div>

@@ -31,10 +31,12 @@ body {
     }
 
     &__section {
+        padding: 60px 0;
         width: 80%;
     }
 
     &__aside {
+        padding: 60px 0;
         max-width: 20%;
         margin-left: 20px;
         flex-shrink: 0;
