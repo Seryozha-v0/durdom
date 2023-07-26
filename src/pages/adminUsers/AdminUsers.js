@@ -1,12 +1,38 @@
+import { useEffect, useState } from "react";
+import AsideMenu from "../../components/asideMenu/AsideMenu";
 import Filters from "../../components/filters/Filters";
 import Search from "../../components/search/Search";
-import { asideMenu, usersAdmin, usersFilter } from "../../data/adminData";
+import { asideMenuData, usersAdmin, usersFilter } from "../../data/adminData";
 
 import CalendarIcon from './../../img/icons/calendar-month.svg';
 
 import './adminUser.scss';
 
 const AdminUsers = () => {
+    const [statusFilter, setStatusFilter] = useState('all');
+    const [usersList, setUsersList] = useState([]);
+
+    const handleStatusFilter = (el) => {
+        console.log(el);
+        const status = el.target.dataset.value;
+        
+        const targetActive = document.getElementsByClassName('filters__field_active')[0];
+        targetActive.classList.remove('filters__field_active');
+        el.target.classList.add('filters__field_active');
+
+        setStatusFilter(status);
+    }
+
+    useEffect(() => {
+        let arr = usersAdmin;
+
+        if (statusFilter != 'all') {
+            arr = usersAdmin.filter((user) => user.status === statusFilter);
+        }
+
+        setUsersList(arr);
+    }, [statusFilter]);
+
     return (
         <div class="container container_row">
             <div class="container__section">
@@ -16,6 +42,7 @@ const AdminUsers = () => {
                             <Filters
                                 fields={usersFilter}
                                 inSection={true}
+                                func={handleStatusFilter}
                             />
                         </div>
                         <div class="adminUsers__search">
@@ -25,7 +52,7 @@ const AdminUsers = () => {
                         </div>
                         <div class="adminUsers__list">
                             <div className="usersList">
-                                {usersAdmin.map((item, i) => (
+                                {usersList.map((item, i) => (
                                     <div key={`usersAdmin_${i}`} className="usersList__item">
                                         <div className="usersList__avatar">
                                             <img src={item.avatar} alt={item.name} />
@@ -52,18 +79,11 @@ const AdminUsers = () => {
                     </div>
                 </section>
             </div>
-            <div class="container__aside">
+            <div class="aside-container">
                 <aside>
-                    <nav class="asideMenu">
-                        {asideMenu.map((item, i) => (
-                            <div key={i} class="asideMenu__item">
-                                <a href="#" class="asideMenu__icon">
-                                    <img src={item.icon} alt={item.title} />
-                                </a>
-                                <a href="#">{item.title}</a>
-                            </div>
-                        ))}
-                    </nav>
+                    <AsideMenu
+                        menu={asideMenuData}
+                    />
                 </aside>
             </div>
         </div>

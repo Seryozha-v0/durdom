@@ -65,33 +65,3 @@
         margin: 8px 0;
     }
 }
-
-.asideMenu {
-    color: var(--blue-900);
-    font-size: 18px;
-    font-weight: 500;
-
-    &__item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-    }
-
-    &__icon {
-        flex-shrink: 0;
-        margin-right: 6px;
-        width: 32px;
-        height: 32px;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-    }
-}

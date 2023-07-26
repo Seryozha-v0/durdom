@@ -11,27 +11,33 @@ import woman from './../img/avatars/woman.jpg';
 export const asideMenuData = [
     {
         icon: projectsIcon,
-        title: 'Проекты'
+        title: 'Проекты',
+        url: '/admin/projects'
     },
     {
         icon: usersIcon,
-        title: 'Пользователи'
+        title: 'Пользователи',
+        url: '/admin/users'
     },
     {
         icon: commentsIcon,
-        title: 'Комментарии'
+        title: 'Комментарии',
+        url: '#'
     },
     {
         icon: tagsIcon,
-        title: 'Теги'
+        title: 'Теги',
+        url: '#'
     },
     {
         icon: categoriesIcon,
-        title: 'Категории'
+        title: 'Категории',
+        url: '#'
     },
     {
         icon: specsIcon,
-        title: 'Специализации'
+        title: 'Специализации',
+        url: '#'
     },
 ];
 
@@ -110,12 +116,22 @@ export const usersAdmin = [
         nick: 'Goodwind',
         email: 'goodwind@gmail.com',
         activity: '3 часа назад',
+        status: 'registered'
     },
     {
         avatar: woman,
         name: 'Ирина Смирнова',
         nick: 'Irinka85',
         email: 'irka85@gmail.com',
-        activity: '15.02.219',
+        activity: '15.02.2019',
+        status: 'blocked'
+    },
+    {
+        avatar: woman,
+        name: 'Вася Смирнова',
+        nick: 'Irinka85',
+        email: 'irka85@gmail.com',
+        activity: '15.02.2014',
+        status: 'removed'
     },
 ];

@@ -35,16 +35,17 @@ body {
         width: 80%;
     }
 
-    &__aside {
-        padding: 60px 0;
-        max-width: 20%;
-        margin-left: 20px;
-        flex-shrink: 0;
-    }
 }
 
 .sec-container {
     max-width: 752px;
+}
+
+.aside-container {
+    padding: 60px 0;
+    max-width: 20%;
+    margin-left: 20px;
+    flex-shrink: 0;
 }
 
 h1 {

@@ -26,7 +26,7 @@ const Admin = () => {
         const targetActive = document.getElementsByClassName('filters__field_active')[0];
         targetActive.classList.remove('filters__field_active');
         el.target.classList.add('filters__field_active');
-
+        
         setStatusFilter(status);
     };
 
@@ -86,7 +86,7 @@ const Admin = () => {
                     </div>
                 </section>
             </div>
-            <div class="container__aside">
+            <div class="aside-container">
                 <aside>
                     <AsideMenu 
                         menu={asideMenuData}
