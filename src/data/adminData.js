@@ -8,7 +8,7 @@ import specsIcon from './../img/icons/specializations.svg';
 import man2 from './../img/avatars/man2.jpg';
 import woman from './../img/avatars/woman.jpg';
 
-export const asideMenu = [
+export const asideMenuData = [
     {
         icon: projectsIcon,
         title: 'Проекты'

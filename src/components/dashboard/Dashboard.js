@@ -9,7 +9,6 @@ const Dashboard = ({ spClass, children, ...props }) => {
     const handleScrollBar = (el) => {
         const clientHeight = el.clientHeight;
         const scrollHeight = el.scrollHeight;
-        console.log(clientHeight, scrollHeight);
         
         if (scrollHeight != clientHeight) {
             return setShowScrollBar(true);

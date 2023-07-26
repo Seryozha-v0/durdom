@@ -8,7 +8,8 @@ import './admin.scss';
 import { useEffect, useState } from 'react';
 import Dashboard from '../../components/dashboard/Dashboard';
 
-import { filters, test, asideMenu } from '../../data/adminData';
+import { filters, test, asideMenuData } from '../../data/adminData';
+import AsideMenu from '../../components/asideMenu/AsideMenu';
 
 const Admin = () => {
     const [arrProjects, setArrProjects] = useState([]);
@@ -87,16 +88,9 @@ const Admin = () => {
             </div>
             <div class="container__aside">
                 <aside>
-                    <nav class="asideMenu">
-                        {asideMenu.map((item, i) => (
-                            <div key={i} class="asideMenu__item">
-                                <a href="#" class="asideMenu__icon">
-                                    <img src={item.icon} alt={item.title} />
-                                </a>
-                                <a href="#">{item.title}</a>
-                            </div>
-                        ))}
-                    </nav>
+                    <AsideMenu 
+                        menu={asideMenuData}
+                    />
                 </aside>
             </div>
         </div>
