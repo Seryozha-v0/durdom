@@ -4,8 +4,10 @@ import Header from "./components/header/Header";
 import ScrollUp from "./components/scrollUp/ScrollUp";
 import Offers from "./components/offers/Offers";
 import { useEffect, useState } from "react";
+
 import Admin from "./pages/admin/Admin";
-import AdminUsers from "./pages/adminUsers/AdminUsers";
+import AdminProjects from "./components/adminProjects/AdminProjects";
+import AdminUsers from "./components/adminUsers/AdminUsers";
 
 function App() {
     const [offerOpen, setOfferOpen] = useState(false);
@@ -23,10 +25,10 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<Main />} />
-                <Route path="/admin">
-                    <Route path="/admin/" element={<Admin />} />
-                    <Route path="/admin/projects" element={<Admin />} />
-                    <Route path="/admin/users" element={<AdminUsers />} />
+                <Route path="/admin/" element={<Admin />}>
+                    <Route index element={<AdminProjects />}/>
+                    <Route path="projects" element={<AdminProjects />} />
+                    <Route path="users" element={<AdminUsers />} />
                 </Route>
             </Routes>
 

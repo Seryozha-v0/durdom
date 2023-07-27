@@ -12,12 +12,12 @@ export const asideMenuData = [
     {
         icon: projectsIcon,
         title: 'Проекты',
-        url: '/admin/projects'
+        url: 'projects'
     },
     {
         icon: usersIcon,
         title: 'Пользователи',
-        url: '/admin/users'
+        url: 'users'
     },
     {
         icon: commentsIcon,
