@@ -8,6 +8,7 @@
     box-shadow: var(--shadow);
     font-weight: 500;
     min-width: 160px;
+    cursor: pointer;
 
     &__icon {
         width: 24px;
@@ -43,15 +44,14 @@
                 fill: var(--blue-900);
             }
         }
+    }
 
-        &:hover {
-            color: var(--blue-gradient);
-
-            .btn {
-                &__icon svg path {
-                    fill: var(--blue-gradient);
-                }
-            }
-        }
+    &_outline {
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        color: var(--gray-400);
+        border-bottom: 1px solid var(--gray-200);
+        padding: 5px;
     }
 }

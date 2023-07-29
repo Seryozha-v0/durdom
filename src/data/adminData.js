@@ -22,22 +22,22 @@ export const asideMenuData = [
     {
         icon: commentsIcon,
         title: 'Комментарии',
-        url: '#'
+        url: 'comments'
     },
     {
         icon: tagsIcon,
         title: 'Теги',
-        url: '#'
+        url: 'tags'
     },
     {
         icon: categoriesIcon,
         title: 'Категории',
-        url: '#'
+        url: 'categories'
     },
     {
         icon: specsIcon,
         title: 'Специализации',
-        url: '#'
+        url: 'specs'
     },
 ];
 
@@ -133,5 +133,64 @@ export const usersAdmin = [
         email: 'irka85@gmail.com',
         activity: '15.02.2014',
         status: 'removed'
+    },
+];
+
+export const commentsData = [
+    {
+        user: usersAdmin[0],
+        comment: 'Studies in mice have shown that tetrahydrocannabiol affects the olfactory bulb, which is responsible for the senses of taste and smell. Sensitivity to tastes and smells escalates -> you feel them much better -> they provoke an appetite, everything around you seems tastier than it really is.',
+        answers: [
+            {
+                user: usersAdmin[1],
+                comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                answers: [
+                    {
+                        user: usersAdmin[1],
+                        comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                        answers: [
+                            {
+                                user: usersAdmin[1],
+                                comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                                answers: [
+                                    {
+                                        user: usersAdmin[1],
+                                        comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        user: usersAdmin[0],
+        comment: 'Studies in mice have shown that tetrahydrocannabiol affects the olfactory bulb, which is responsible for the senses of taste and smell. Sensitivity to tastes and smells escalates -> you feel them much better -> they provoke an appetite, everything around you seems tastier than it really is.',
+        answers: [
+            {
+                user: usersAdmin[1],
+                comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                answers: [
+                    {
+                        user: usersAdmin[1],
+                        comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                        answers: [
+                            {
+                                user: usersAdmin[1],
+                                comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                                answers: [
+                                    {
+                                        user: usersAdmin[1],
+                                        comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
     },
 ];

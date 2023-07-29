@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import './button.scss';
 
 const Button = ({ icon, variant, spClass, children, ...props }) => {
-    const variants = ['standart', 'white'];
+    const variants = ['standart', 'white', 'outline'];
     let styleType = 'standart';
 
     if (variants.includes(variant)) {

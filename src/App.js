@@ -3,11 +3,16 @@ import Main from "./pages/main/Main";
 import Header from "./components/header/Header";
 import ScrollUp from "./components/scrollUp/ScrollUp";
 import Offers from "./components/offers/Offers";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Admin from "./pages/admin/Admin";
 import AdminProjects from "./components/adminProjects/AdminProjects";
 import AdminUsers from "./components/adminUsers/AdminUsers";
+import AdminComments from "./components/adminComments/AdminComments";
+import MyProfile from "./pages/myProfile/MyProfile";
+import ProfileLogIn from "./components/profileLogIn/ProfileLogIn";
+import ProfileRegistry from "./components/profileRegistry/ProfileRegistry";
+import Project from "./pages/project/Project";
 
 function App() {
     const [offerOpen, setOfferOpen] = useState(false);
@@ -29,7 +34,14 @@ function App() {
                     <Route index element={<AdminProjects />}/>
                     <Route path="projects" element={<AdminProjects />} />
                     <Route path="users" element={<AdminUsers />} />
+                    <Route path="comments" element={<AdminComments />} />
                 </Route>
+                <Route path="/profile/" element={<MyProfile />}>
+                    <Route index element={<p>test</p>} />
+                    <Route path="login" element={<ProfileLogIn />} />
+                    <Route path="registry" element={<ProfileRegistry />} />
+                </Route>
+                <Route path="/project/:id" element={<Project />} />
             </Routes>
 
             <ScrollUp />
