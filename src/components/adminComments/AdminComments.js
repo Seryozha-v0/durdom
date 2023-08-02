@@ -1,17 +1,20 @@
 import { useEffect, useState } from 'react';
-import { commentsData } from '../../data/adminData';
+import { commentsData, usersAdmin } from '../../data/adminData';
 
 import './adminComments.scss'
 import clsx from 'clsx';
+
+import SendIcon from './../../img/icons/send-comment.svg';
 
 const CommentsOutWrite = (arr, level, mainAuthor) => {
     if (level == undefined) level = 1;
 
     return (
         <ul className={clsx(
-            'commentsOut__block',
-            { 'commentsOut__block_level': level > 1 },
-            { [`commentsOut__block_${level}`]: level > 1 }
+            'commentsOut',
+            { 'commentsOut_origin': level == 1 },
+            { 'commentsOut_level': level > 1 },
+            { [`commentsOut_level-${level}`]: level > 1 }
         )}
         >
             {arr.map((item, i) => (
@@ -79,14 +82,16 @@ const AdminComments = () => {
             </div>
             <div className="writeComment">
                 <div className="writeComment__profile">
-                    <img src="" alt="" />
+                    <img src={usersAdmin[0].avatar} alt="" />
                 </div>
                 <div className="writeComment__input">
-                    <input type="text" />
-                    <button type='submit'>Send</button>
+                    <input type="text" placeholder='Write your thoughts on the project' />
+                    <button type='submit'>
+                        <img src={SendIcon} alt="send" />
+                    </button>
                 </div>
             </div>
-            <div className="commentsOut">
+            <div className="adminComments__outBlock">
                 {comments.length ? (
                     CommentsOutWrite(comments)
                 ) : ('Загрузка...')}

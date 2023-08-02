@@ -2,10 +2,12 @@ import Button from "../button/Button";
 
 import { ReactComponent as CreateAccIcon } from './../../img/icons/create-account.svg';
 
+import './profileRegistry.scss';
+
 const ProfileRegistry = () => {
     return (
         <section class="registry">
-            <div className="sec-title">
+            <div className="sec-title sec-title_center">
                 Создание аккаунта
             </div>
             <form class="accountForm">
@@ -26,8 +28,9 @@ const ProfileRegistry = () => {
                 <div className="accountForm__input-wrap">
                     <label htmlFor="password" className="accountForm__label">Пароль</label>
                     <input type="password" name="password" placeholder="Придумайте пароль" className="accountForm__input" />
+                    <div class="accountForm__error">Минимум 6 символов</div>
                 </div>
-                <Button type="submit">Войти</Button>
+                <Button type="submit">Создать аккаунт</Button>
             </form>
             <button className="googleAuth">
                 <div className="googleAuth__icon">

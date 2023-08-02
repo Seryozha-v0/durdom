@@ -45,6 +45,16 @@ body {
     max-width: 752px;
 }
 
+.sec-title {
+    color: var(--black);
+    font-size: 32px;
+    font-weight: 700;
+
+    &_center {
+        text-align: center;
+    }
+}
+
 .aside-container {
     padding: 60px 0;
     max-width: 20%;
