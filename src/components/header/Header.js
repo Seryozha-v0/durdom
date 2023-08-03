@@ -6,6 +6,7 @@ import ProfileMini from '../ProfileMini/ProfileMini';
 
 import './header.scss';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     const [notificationBarOpen, setNotificationBarOpen] = useState(false);
@@ -30,14 +31,14 @@ const Header = () => {
             <div class='container'>
                 <div className="header__wrap">
                     <div class='header__logo'>
-                        <a class="header__logo-wrap">
+                        <Link to="/" class="header__logo-wrap">
                             <img src={logo} alt="DurDom" />
-                        </a>
+                        </Link>
                         <a href="#" class='header__logo-link'>DurDom</a>
                     </div>
                     <nav class="header__nav">
-                        <div class="header__links"><a href="#">Projects</a></div>
-                        <div class="header__links"><a href="#">About</a></div>
+                        <div class="header__links"><Link to="/projects">Projects</Link></div>
+                        <div class="header__links"><Link to="/about">About</Link></div>
                     </nav>
                     <div class="header__utilities">
                         <a href="#" class='header__addProject'>

@@ -1,55 +1,11 @@
 import { useEffect, useState } from 'react';
 import { commentsData, usersAdmin } from '../../data/adminData';
+import CommentsOut from '../commentsOut/CommentsOut';
 
 import './adminComments.scss'
-import clsx from 'clsx';
 
 import SendIcon from './../../img/icons/send-comment.svg';
-
-const CommentsOutWrite = (arr, level, mainAuthor) => {
-    if (level == undefined) level = 1;
-
-    return (
-        <ul className={clsx(
-            'commentsOut',
-            { 'commentsOut_origin': level == 1 },
-            { 'commentsOut_level': level > 1 },
-            { [`commentsOut_level-${level}`]: level > 1 }
-        )}
-        >
-            {arr.map((item, i) => (
-                <li key={i} className="commentsOut__item">
-                    <div className="commentsOut__author">
-                        <div className="commentsOut__avatar">
-                            <img src={item.user.avatar} alt={item.user.name} />
-                        </div>
-                        <div>
-                            <div className="commentsOut__name">
-                                {item.user.name}
-                            </div>
-                            <div className="commentsOut__activity">
-                                {item.user.activity}
-                            </div>
-                        </div>
-                        {level > 1 && (
-                            <div class="commentsOut__answerFor">
-                                {mainAuthor?.name}
-                            </div>
-                        )}
-                    </div>
-                    <div className="commentsOut__text">
-                        {item.comment}
-                    </div>
-                    <div className="commentsOut__utilities">
-                        <button type="button" class="commentsOut__answerBtn">Answer</button>
-                        <button type="button" class="commentsOut__answerBtn">Options</button>
-                    </div>
-                    {item.answers && CommentsOutWrite(item.answers, level + 1, level === 1 && item.user || level > 1 && mainAuthor)}
-                </li>
-            ))}
-        </ul>
-    )
-}
+import CommentsInput from '../commentsInput/CommentsInput';
 
 const AdminComments = () => {
     const [commentsCount, setCommentsCount] = useState([]);
@@ -80,20 +36,15 @@ const AdminComments = () => {
             <div class="sec-title">
                 {commentsCount} comments
             </div>
-            <div className="writeComment">
-                <div className="writeComment__profile">
-                    <img src={usersAdmin[0].avatar} alt="" />
-                </div>
-                <div className="writeComment__input">
-                    <input type="text" placeholder='Write your thoughts on the project' />
-                    <button type='submit'>
-                        <img src={SendIcon} alt="send" />
-                    </button>
-                </div>
-            </div>
+            <CommentsInput 
+                profile={usersAdmin[0]}
+                placeholder='Write your thoughts on the project'
+            />
             <div className="adminComments__outBlock">
                 {comments.length ? (
-                    CommentsOutWrite(comments)
+                    <CommentsOut
+                        comments={comments}
+                    />
                 ) : ('Загрузка...')}
             </div>
         </section>
