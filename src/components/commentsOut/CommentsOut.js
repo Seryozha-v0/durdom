@@ -8,15 +8,16 @@ import { useEffect, useState } from 'react';
 import CommentsInput from '../commentsInput/CommentsInput';
 import { usersAdmin } from '../../data/adminData';
 
-const CommentsOutWrite = (arr, answerComment, handleAnswerComment, level, mainAuthor, itemMap, index) => {
-    if (level == undefined) level = 1;
-    if (itemMap === undefined) {
-        itemMap = []
-    } else {
-        itemMap.push(index);
-    };
+const CommentsOutWrite = ({ arr, answer, parents, level }) => {
+    const { answerComment, onAnswer } = answer;
 
-    console.log(itemMap, index);
+    if (!level) {
+        level = 1;
+    }
+
+    if (!parents) {
+        parents = { mapParents: [], currParent: 0, parLevel: level }
+    }
 
     return (
         <ul className={clsx(
@@ -26,48 +27,53 @@ const CommentsOutWrite = (arr, answerComment, handleAnswerComment, level, mainAu
             { [`commentsOut_level_${level}`]: level > 1 }
         )}
         >
-            {arr.map((item, i) => (
-                <li key={i} className="commentsOut__item">
-                    <div className="commentsOut__author">
-                        <div className="commentsOut__avatar">
-                            <img src={item.user.avatar} alt={item.user.name} />
-                        </div>
-                        <div class="commentsOut__profile">
-                            <div className="commentsOut__name">
-                                {item.user.name}
+            {arr.map((item, i) => {
+
+                const map = parents.mapParents.slice(0, level - 1);
+                map.push(i);
+
+                parents.mapParents = map;
+
+                return (
+                    <li key={i} className="commentsOut__item">
+                        <div className="commentsOut__author">
+                            <div className="commentsOut__avatar">
+                                <img src={item.user.avatar} alt={item.user.name} />
                             </div>
-                            <div className="commentsOut__activity">
-                                {item.user.activity}
-                            </div>
-                        </div>
-                        {level > 1 && (
-                            <div class="commentsOut__answerFor">
-                                <div className="commentsOut__replayIcon">
-                                    <img src={ReplayIcon} alt="replay" />
+                            <div class="commentsOut__profile">
+                                <div className="commentsOut__name">
+                                    {item.user.name}
                                 </div>
-                                {mainAuthor?.name}
+                                <div className="commentsOut__activity">
+                                    {item.user.activity}
+                                </div>
                             </div>
-                        )}
-                    </div>
-                    <div className="commentsOut__text">
-                        {item.comment}
-                    </div>
-                    <div className="commentsOut__utilities">
-                        <button
-                            type="button"
-                            class="commentsOut__answerBtn"
-                            onClick={() => handleAnswerComment(itemMap, level, i)}
-                        >
-                            Answer
-                        </button>
-                        <button type="button" class="commentsOut__answerBtn">
-                            <img src={OptionsIcon} alt="options" />
-                        </button>
-                    </div>
-                    {
-                    level === answerComment.level &&
-                        i === answerComment.index &&
-                        answerComment.isOpen && (
+                            {true && (
+                                <div class="commentsOut__answerFor">
+                                    <div className="commentsOut__replayIcon">
+                                        <img src={ReplayIcon} alt="replay" />
+                                    </div>
+                                    {/* {mainAuthor?.name} */}
+                                    lvl: {level} - map: {map} - {i}
+                                </div>
+                            )}
+                        </div>
+                        <div className="commentsOut__text">
+                            {item.comment}
+                        </div>
+                        <div className="commentsOut__utilities">
+                            <button
+                                type="button"
+                                class="commentsOut__answerBtn"
+                                onClick={() => onAnswer(level, i, map)}
+                            >
+                                Answer {map}
+                            </button>
+                            <button type="button" class="commentsOut__answerBtn">
+                                <img src={OptionsIcon} alt="options" />
+                            </button>
+                        </div>
+                        {false && (
                             <div className="commentsOut__answerInput">
                                 <CommentsInput
                                     profile={usersAdmin[0]}
@@ -75,17 +81,17 @@ const CommentsOutWrite = (arr, answerComment, handleAnswerComment, level, mainAu
                                 />
                             </div>
                         )}
-                    {item.answers && CommentsOutWrite(
-                        item.answers,
-                        answerComment,
-                        handleAnswerComment,
-                        level + 1,
-                        level === 1 && item.user || level > 1 && mainAuthor,
-                        itemMap,
-                        i,
-                    )}
-                </li>
-            ))}
+                        {item.answers && (
+                            <CommentsOutWrite
+                                arr={item.answers}
+                                answer={{ answerComment: answerComment, onAnswer: onAnswer }}
+                                parents={{ mapParents: parents.mapParents, currParent: i, parLevel: level }}
+                                level={level + 1}
+                            />
+                        )}
+                    </li>
+                )
+            })}
         </ul>
     )
 }
@@ -95,32 +101,50 @@ const CommentsOut = ({
     comments,
 }) => {
     const [commentsArr, setCommentsArr] = useState([]);
-    const [answerComment, setAnswerComment] = useState({
-        itemMap: null,
-        level: null,
-        index: null,
-        isOpen: false,
-    })
+    const [answerComment, setAnswerComment] = useState(false)
 
-    const handleAnswerComment = (itemMap, level, index) => {
-        if (level === answerComment.level && index === answerComment.index && answerComment.isOpen) {
-            return setAnswerComment({
-                itemMap: null,
-                level: null,
-                index: null,
-                isOpen: false,
-            });
-        }
+    const handleAnswerComment = (level, i, mapToComment) => {
+        let secCommentsArr = commentsArr.slice();
 
-        setAnswerComment({
-            itemMap: itemMap,
-            level: level,
-            index: index,
-            isOpen: true,
-        });
+        secCommentsArr = mapComments(mapToComment, secCommentsArr, level);
+
+        setCommentsArr(secCommentsArr);
     }
 
-    console.log(answerComment);
+    const mapComments = (mapToComment, comments, level, currLevel, map) => {
+        if (!currLevel) {
+            currLevel = 1;
+        }
+
+        if (!map) {
+            map = [];
+            console.log('create map')
+        }
+
+        comments.map((comment, i) => {
+            const currMap = map.slice(0, currLevel - 1);
+            currMap.push(i);
+
+            map = currMap;
+
+            if (map.toString() == mapToComment.toString()) {
+                console.log(map, mapToComment);
+                console.log(comment);
+                comment.answers.push(
+                    {
+                        user: usersAdmin[0],
+                        comment: 'test',
+                    }
+                )
+            }
+
+            if (comment.answers) {
+                mapComments(mapToComment, comment.answers, level, currLevel + 1, map);
+            }
+        })
+
+        return comments;
+    }
 
     useEffect(() => {
         const arr = comments;
@@ -128,7 +152,14 @@ const CommentsOut = ({
     }, []);
 
     return (
-        CommentsOutWrite(commentsArr, answerComment, handleAnswerComment)
+        <>
+            {commentsArr && (
+                <CommentsOutWrite
+                    arr={commentsArr}
+                    answer={{ answerComment: answerComment, onAnswer: handleAnswerComment }}
+                />
+            )}
+        </>
     )
 }
 

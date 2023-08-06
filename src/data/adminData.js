@@ -128,7 +128,7 @@ export const usersAdmin = [
     },
     {
         avatar: woman,
-        name: 'Вася Смирнова',
+        name: 'Варя Смирнова',
         nick: 'Irinka85',
         email: 'irka85@gmail.com',
         activity: '15.02.2014',
@@ -148,21 +148,47 @@ export const commentsData = [
                     {
                         user: usersAdmin[1],
                         comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
-                        answers: [
-                            {
-                                user: usersAdmin[1],
-                                comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
-                                answers: [
-                                    {
-                                        user: usersAdmin[1],
-                                        comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
-                                    }
-                                ]
-                            }
-                        ]
+                        answers: [],
+                    },
+                    {
+                        user: usersAdmin[2],
+                        comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                        answers: [],
+                    },
+                    {
+                        user: usersAdmin[2],
+                        comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                        answers: [],
                     }
                 ]
-            }
+            },
+            {
+                user: usersAdmin[1],
+                comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                answers: [
+                    {
+                        user: usersAdmin[1],
+                        comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                        answers: [],
+                    },
+                    {
+                        user: usersAdmin[2],
+                        comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                        answers: [],
+                    },
+                ]
+            },
+            {
+                user: usersAdmin[0],
+                comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                answers: [
+                    {
+                        user: usersAdmin[2],
+                        comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                        answers: [],
+                    },
+                ]
+            },
         ]
     },
     {
@@ -184,8 +210,21 @@ export const commentsData = [
                                     {
                                         user: usersAdmin[1],
                                         comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                                        answers: [],
                                     }
                                 ]
+                            },
+                            
+                            {
+                                user: usersAdmin[2],
+                                comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                                answers: [],
+                            },
+                            
+                            {
+                                user: usersAdmin[2],
+                                comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
+                                answers: [],
                             }
                         ]
                     }
