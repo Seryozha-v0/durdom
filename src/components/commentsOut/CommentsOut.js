@@ -8,15 +8,15 @@ import { useEffect, useState } from 'react';
 import CommentsInput from '../commentsInput/CommentsInput';
 import { usersAdmin } from '../../data/adminData';
 
-const CommentsOutWrite = ({ arr, answer, parents, level }) => {
-    const { answerComment, onAnswer } = answer;
+const CommentsOutWrite = ({ arr, answer, parents, level, answerTextInput, handleAnswerTextInput }) => {
+    const { answerComment, onAnswer, onNewAnwer } = answer;
 
     if (!level) {
         level = 1;
     }
 
     if (!parents) {
-        parents = { mapParents: [], currParent: 0, parLevel: level }
+        parents = { mapParents: [] }
     }
 
     return (
@@ -48,13 +48,12 @@ const CommentsOutWrite = ({ arr, answer, parents, level }) => {
                                     {item.user.activity}
                                 </div>
                             </div>
-                            {true && (
+                            {parents?.userParent && (
                                 <div class="commentsOut__answerFor">
                                     <div className="commentsOut__replayIcon">
                                         <img src={ReplayIcon} alt="replay" />
                                     </div>
-                                    {/* {mainAuthor?.name} */}
-                                    lvl: {level} - map: {map} - {i}
+                                    {parents.userParent?.name}
                                 </div>
                             )}
                         </div>
@@ -65,28 +64,33 @@ const CommentsOutWrite = ({ arr, answer, parents, level }) => {
                             <button
                                 type="button"
                                 class="commentsOut__answerBtn"
-                                onClick={() => onAnswer(level, i, map)}
+                                onClick={() => onAnswer(map)}
                             >
-                                Answer {map}
+                                Answer
                             </button>
                             <button type="button" class="commentsOut__answerBtn">
                                 <img src={OptionsIcon} alt="options" />
                             </button>
                         </div>
-                        {false && (
+                        {answerComment.toString() === map.toString() && (
                             <div className="commentsOut__answerInput">
                                 <CommentsInput
                                     profile={usersAdmin[0]}
                                     placeholder='Your answer'
+                                    value={answerTextInput}
+                                    onChange={handleAnswerTextInput}
+                                    onSubmit={() => onNewAnwer(level, i, map)}
                                 />
                             </div>
                         )}
                         {item.answers && (
                             <CommentsOutWrite
                                 arr={item.answers}
-                                answer={{ answerComment: answerComment, onAnswer: onAnswer }}
-                                parents={{ mapParents: parents.mapParents, currParent: i, parLevel: level }}
+                                answer={{ answerComment: answerComment, onAnswer: onAnswer, onNewAnwer: onNewAnwer }}
+                                parents={{ mapParents: parents.mapParents, userParent: item.user }}
                                 level={level + 1}
+                                answerTextInput={answerTextInput}
+                                handleAnswerTextInput={handleAnswerTextInput}
                             />
                         )}
                     </li>
@@ -101,24 +105,37 @@ const CommentsOut = ({
     comments,
 }) => {
     const [commentsArr, setCommentsArr] = useState([]);
-    const [answerComment, setAnswerComment] = useState(false)
+    const [answerComment, setAnswerComment] = useState([]);
+    const [answerTextInput, setAnwerTextInput] = useState('');
 
-    const handleAnswerComment = (level, i, mapToComment) => {
-        let secCommentsArr = commentsArr.slice();
-
-        secCommentsArr = mapComments(mapToComment, secCommentsArr, level);
-
-        setCommentsArr(secCommentsArr);
+    const handleAnswerTextInput = (e) => {
+        const text = e.target.value;
+        setAnwerTextInput(text);
     }
 
-    const mapComments = (mapToComment, comments, level, currLevel, map) => {
+    const handleAnswerComment = (map) => {
+        if (map.toString() === answerComment.toString()) {
+            return setAnswerComment([]);
+        }
+        setAnswerComment(map);
+    }
+
+    const handleCommentsArr = (level, i, mapToComment) => {
+        let secCommentsArr = commentsArr.slice();
+
+        secCommentsArr = newCommentsAdd(mapToComment, secCommentsArr, level);
+
+        setCommentsArr(secCommentsArr);
+        setAnswerComment([]);
+    }
+
+    const newCommentsAdd = (mapToComment, comments, level, currLevel, map) => {
         if (!currLevel) {
             currLevel = 1;
         }
 
         if (!map) {
             map = [];
-            console.log('create map')
         }
 
         comments.map((comment, i) => {
@@ -128,18 +145,19 @@ const CommentsOut = ({
             map = currMap;
 
             if (map.toString() == mapToComment.toString()) {
-                console.log(map, mapToComment);
-                console.log(comment);
                 comment.answers.push(
                     {
                         user: usersAdmin[0],
-                        comment: 'test',
+                        comment: answerTextInput,
+                        answers: [],
                     }
                 )
+                setAnwerTextInput('');
+                return true;
             }
 
             if (comment.answers) {
-                mapComments(mapToComment, comment.answers, level, currLevel + 1, map);
+                newCommentsAdd(mapToComment, comment.answers, level, currLevel + 1, map);
             }
         })
 
@@ -156,7 +174,9 @@ const CommentsOut = ({
             {commentsArr && (
                 <CommentsOutWrite
                     arr={commentsArr}
-                    answer={{ answerComment: answerComment, onAnswer: handleAnswerComment }}
+                    answer={{ answerComment: answerComment, onAnswer: handleAnswerComment, onNewAnwer: handleCommentsArr }}
+                    answerTextInput={answerTextInput}
+                    handleAnswerTextInput={handleAnswerTextInput}
                 />
             )}
         </>

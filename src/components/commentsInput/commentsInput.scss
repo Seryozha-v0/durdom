@@ -36,6 +36,7 @@
             &:focus,
             &:focus-visible {
                 border: none;
+                outline: none;
             }
         }
 
@@ -49,6 +50,7 @@
             padding: 0;
             margin: 0;
             margin-right: 15px;
+            cursor: pointer;
 
             img {
                 width: 100%;
