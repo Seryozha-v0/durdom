@@ -34,7 +34,7 @@ const Header = () => {
                         <Link to="/" class="header__logo-wrap">
                             <img src={logo} alt="DurDom" />
                         </Link>
-                        <a href="#" class='header__logo-link'>DurDom</a>
+                        <Link to="/" class='header__logo-link'>DurDom</Link>
                     </div>
                     <nav class="header__nav">
                         <div class="header__links"><Link to="/projects">Projects</Link></div>

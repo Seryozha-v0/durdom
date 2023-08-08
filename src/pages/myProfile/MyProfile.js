@@ -1,9 +1,9 @@
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 
 const MyProfile = () => {
     return (
         <div class="container container_mini">
-            {<Outlet />}
+            <Outlet />
         </div>
     )
 }

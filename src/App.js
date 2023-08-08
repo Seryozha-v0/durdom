@@ -35,12 +35,16 @@ function App() {
                     <Route path="projects" element={<AdminProjects />} />
                     <Route path="users" element={<AdminUsers />} />
                     <Route path="comments" element={<AdminComments />} />
+                    <Route path="tags" element={<p>test</p>} />
+                    <Route path="categories" element={<p>test</p>} />
+                    <Route path="specs" element={<p>test</p>} />
                 </Route>
                 <Route path="/profile/" element={<MyProfile />}>
                     <Route index element={<p>test</p>} />
                     <Route path="login" element={<ProfileLogIn />} />
                     <Route path="registry" element={<ProfileRegistry />} />
                 </Route>
+                <Route path="/projects" element={<p>test</p>} />
                 <Route path="/project/:id" element={<Project />} />
             </Routes>
 

@@ -17,7 +17,7 @@ const Admin = () => {
     return (
         <div class="container container_row">
             <div class="container__section">
-                {<Outlet />}
+                <Outlet />
             </div>
             <div class="aside-container">
                 <aside>
