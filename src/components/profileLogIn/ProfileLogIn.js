@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../button/Button";
 
 import {ReactComponent as CreateAccIcon} from './../../img/icons/create-account.svg';
@@ -25,7 +26,9 @@ const ProfileLogIn = () => {
                 </div>
                 <Button type="submit">Войти</Button>
             </form>
-            <Button variant="white" icon={<CreateAccIcon />}>Создать аккаунт</Button>
+            <Button variant="white" icon={<CreateAccIcon />}>
+                <Link to='/profile/registry'>Создать аккаунт</Link>
+            </Button>
             <Button variant="outline">Восстановить пароль</Button>
         </section>
     )
