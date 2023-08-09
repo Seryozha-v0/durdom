@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import Button from "../button/Button";
 
-import {ReactComponent as CreateAccIcon} from './../../img/icons/create-account.svg';
+import { ReactComponent as CreateAccIcon } from './../../img/icons/create-account.svg';
+import FormTextField from "../formTextField/FormTextField";
 
 const ProfileLogIn = () => {
     return (
@@ -16,14 +17,18 @@ const ProfileLogIn = () => {
                 Войти через Google
             </button>
             <form class="accountForm">
-                <div className="accountForm__input-wrap">
-                    <label htmlFor="email" className="accountForm__label">Email</label>
-                    <input type="text" name="email" placeholder="Введите email" className="accountForm__input" />
-                </div>
-                <div className="accountForm__input-wrap">
-                    <label htmlFor="password" className="accountForm__label">Пароль</label>
-                    <input type="password" name="password" placeholder="Ваш пароль" className="accountForm__input" />
-                </div>
+                <FormTextField
+                    type="text"
+                    placeholder="Введите email"
+                    name="email"
+                    label="Email"
+                />
+                <FormTextField
+                    type="password"
+                    placeholder="Ваш пароль"
+                    name="password"
+                    label="Пароль"
+                />
                 <Button type="submit">Войти</Button>
             </form>
             <Button variant="white" icon={<CreateAccIcon />}>

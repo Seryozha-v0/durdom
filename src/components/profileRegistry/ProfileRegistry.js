@@ -1,4 +1,5 @@
 import Button from "../button/Button";
+import FormTextField from "../formTextField/FormTextField";
 
 import { ReactComponent as CreateAccIcon } from './../../img/icons/create-account.svg';
 
@@ -12,24 +13,32 @@ const ProfileRegistry = () => {
             </div>
             <form class="accountForm">
                 <div className="accountForm__anyInputs">
-                    <div className="accountForm__input-wrap">
-                        <label htmlFor="firstName" className="accountForm__label">Имя</label>
-                        <input type="text" name="firstName" placeholder="Имя" className="accountForm__input" />
-                    </div>
-                    <div className="accountForm__input-wrap">
-                        <label htmlFor="lastName" className="accountForm__label">Фамилия</label>
-                        <input type="text" name="lastName" placeholder="Фамилия" className="accountForm__input" />
-                    </div>
+                    <FormTextField
+                        type="text"
+                        placeholder="Имя"
+                        name="firstName"
+                        label="Имя"
+                    />
+                    <FormTextField
+                        type="text"
+                        placeholder="Фамилия"
+                        name="lastName"
+                        label="Фамилия"
+                    />
                 </div>
-                <div className="accountForm__input-wrap">
-                    <label htmlFor="email" className="accountForm__label">Email</label>
-                    <input type="text" name="email" placeholder="Введите email" className="accountForm__input" />
-                </div>
-                <div className="accountForm__input-wrap">
-                    <label htmlFor="password" className="accountForm__label">Пароль</label>
-                    <input type="password" name="password" placeholder="Придумайте пароль" className="accountForm__input" />
-                    <div class="accountForm__error">Минимум 6 символов</div>
-                </div>
+                <FormTextField
+                    type="text"
+                    placeholder="Введите email"
+                    name="email"
+                    label="Email"
+                />
+                <FormTextField
+                    type="password"
+                    placeholder="Придумайте пароль"
+                    name="password"
+                    label="Пароль"
+                    error="Минимум 6 символов"
+                />
                 <Button type="submit">Создать аккаунт</Button>
             </form>
             <button className="googleAuth">
