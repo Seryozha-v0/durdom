@@ -1,3 +1,6 @@
+@import url("./normalize.css");
+@import url("./fonts.css");
+
 :root {
     --black: #171A36;
     --blue-900: #0051EE;
@@ -32,17 +35,20 @@ body {
 
     &__section {
         padding: 60px 0;
-        width: 80%;
+        width: 100%;
     }
 
     &_mini {
         max-width: 768px;
     }
-
 }
 
 .sec-container {
     max-width: 752px;
+    
+    &_project {
+        max-width: 672px;
+    }
 }
 
 .sec-title {
@@ -57,7 +63,7 @@ body {
 
 .aside-container {
     padding: 60px 0;
-    max-width: 20%;
+    min-width: 280px;
     margin-left: 20px;
     flex-shrink: 0;
 }

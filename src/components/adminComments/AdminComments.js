@@ -3,8 +3,6 @@ import { commentsData, usersAdmin } from '../../data/adminData';
 import CommentsOut from '../commentsOut/CommentsOut';
 
 import './adminComments.scss'
-
-import SendIcon from './../../img/icons/send-comment.svg';
 import CommentsInput from '../commentsInput/CommentsInput';
 
 const AdminComments = () => {

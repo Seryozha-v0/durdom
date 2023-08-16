@@ -1,0 +1,11 @@
+.comments {
+    &__header {
+        margin-bottom: 40px;
+    }
+
+    &__title {
+        color: var(--black, #171A36);
+        font-size: 24px;
+        font-weight: 400;
+    }
+}

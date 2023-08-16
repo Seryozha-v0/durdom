@@ -21,8 +21,8 @@ const ScrollUp = () => {
         <>
             {scrollTop > 600 && (
                 <div class="scrollUp">
-                    <div class="scrollUp__wrap" onClick={scrolling}>
-                        <div class="scrollUp__icon" >
+                    <div class="scrollUp__wrap">
+                        <div class="scrollUp__icon" onClick={scrolling}>
                             <img src={UpIcon} alt="DurDom" />
                         </div>
                     </div>

@@ -8,7 +8,16 @@ import { useEffect, useState } from 'react';
 import CommentsInput from '../commentsInput/CommentsInput';
 import { usersAdmin } from '../../data/adminData';
 
-const CommentsOutWrite = ({ arr, answer, parents, level, answerTextInput, handleAnswerTextInput }) => {
+const CommentsOutWrite = ({ 
+    arr, 
+    answer, 
+    parents, 
+    level, 
+    answerTextInput, 
+    handleAnswerTextInput,
+    commentsCount,
+    handleCommentsCount,
+}) => {
     const { answerComment, onAnswer, onNewAnwer } = answer;
 
     if (!level) {
@@ -28,7 +37,6 @@ const CommentsOutWrite = ({ arr, answer, parents, level, answerTextInput, handle
         )}
         >
             {arr.map((item, i) => {
-
                 const map = parents.mapParents.slice(0, level - 1);
                 map.push(i);
 
@@ -91,6 +99,8 @@ const CommentsOutWrite = ({ arr, answer, parents, level, answerTextInput, handle
                                 level={level + 1}
                                 answerTextInput={answerTextInput}
                                 handleAnswerTextInput={handleAnswerTextInput}
+                                commentsCount={commentsCount}
+                                handleCommentsCount={handleCommentsCount}
                             />
                         )}
                     </li>
@@ -102,83 +112,29 @@ const CommentsOutWrite = ({ arr, answer, parents, level, answerTextInput, handle
 
 
 const CommentsOut = ({
+    commentsCount,
+    handleCommentsCount,
     comments,
+    answerTo,
+    handleAnswerTo,
+    answerValue,
+    onAnswerChange,
+    onAnswerSubmit,
 }) => {
-    const [commentsArr, setCommentsArr] = useState([]);
-    const [answerComment, setAnswerComment] = useState([]);
-    const [answerTextInput, setAnwerTextInput] = useState('');
-
-    const handleAnswerTextInput = (e) => {
-        const text = e.target.value;
-        setAnwerTextInput(text);
-    }
-
-    const handleAnswerComment = (map) => {
-        if (map.toString() === answerComment.toString()) {
-            return setAnswerComment([]);
-        }
-        setAnswerComment(map);
-    }
-
-    const handleCommentsArr = (level, i, mapToComment) => {
-        let secCommentsArr = commentsArr.slice();
-
-        secCommentsArr = newCommentsAdd(mapToComment, secCommentsArr, level);
-
-        setCommentsArr(secCommentsArr);
-        setAnswerComment([]);
-    }
-
-    const newCommentsAdd = (mapToComment, comments, level, currLevel, map) => {
-        if (!currLevel) {
-            currLevel = 1;
-        }
-
-        if (!map) {
-            map = [];
-        }
-
-        comments.map((comment, i) => {
-            const currMap = map.slice(0, currLevel - 1);
-            currMap.push(i);
-
-            map = currMap;
-
-            if (map.toString() == mapToComment.toString()) {
-                comment.answers.push(
-                    {
-                        user: usersAdmin[0],
-                        comment: answerTextInput,
-                        answers: [],
-                    }
-                )
-                setAnwerTextInput('');
-                return true;
-            }
-
-            if (comment.answers) {
-                newCommentsAdd(mapToComment, comment.answers, level, currLevel + 1, map);
-            }
-        })
-
-        return comments;
-    }
-
-    useEffect(() => {
-        const arr = comments;
-        setCommentsArr(arr);
-    }, []);
-
     return (
         <>
-            {commentsArr && (
-                <CommentsOutWrite
-                    arr={commentsArr}
-                    answer={{ answerComment: answerComment, onAnswer: handleAnswerComment, onNewAnwer: handleCommentsArr }}
-                    answerTextInput={answerTextInput}
-                    handleAnswerTextInput={handleAnswerTextInput}
-                />
-            )}
+            <CommentsOutWrite
+                arr={comments}
+                answer={{
+                    answerComment: answerTo,
+                    onAnswer: handleAnswerTo,
+                    onNewAnwer: onAnswerSubmit,
+                }}
+                answerTextInput={answerValue}
+                handleAnswerTextInput={onAnswerChange}
+                commentsCount={commentsCount}
+                handleCommentsCount={handleCommentsCount}
+            />
         </>
     )
 }
