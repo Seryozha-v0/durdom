@@ -40,7 +40,7 @@ export const projects = [
                 comment: 'Studies in mice have shown that tetrahydrocannabiol affects the olfactory bulb, which is responsible for the senses of taste and smell. Sensitivity to tastes and smells escalates -> you feel them much better -> they provoke an appetite, everything around you seems tastier than it really is.',
                 answers: [
                     {
-                        user: usersAdmin[2],
+                        user: usersAdmin[0],
                         comment: 'I don’t want to say that I live in a village, but in my school I have never even seen a microscope, not like a robot that can throw a bottle.',
                         answers: []
                     }
@@ -57,7 +57,7 @@ export const projects = [
         author: usersAdmin[1],
         comments: [
             {
-                user: usersAdmin[1],
+                user: usersAdmin[0],
                 comment: 'Studies in mice have shown that tetrahydrocannabiol affects the olfactory bulb, which is responsible for the senses of taste and smell. Sensitivity to tastes and smells escalates -> you feel them much better -> they provoke an appetite, everything around you seems tastier than it really is.',
                 answers: []
             },

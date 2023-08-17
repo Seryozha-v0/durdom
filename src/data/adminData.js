@@ -115,7 +115,7 @@ export const usersAdmin = [
         name: 'Андрей Карпов',
         nick: 'Goodwind',
         email: 'goodwind@gmail.com',
-        activity: '2023-08-16T13:30:45+00:00',
+        activity: '2023-08-17T08:50:45+03:00',
         status: 'registered'
     },
     {
@@ -123,7 +123,7 @@ export const usersAdmin = [
         name: 'Ирина Смирнова',
         nick: 'Irinka85',
         email: 'irka85@gmail.com',
-        activity: '2019-02-15T13:30:45+00:00',
+        activity: '2019-02-15T13:30:45+03:00',
         status: 'blocked'
     },
     {
@@ -131,7 +131,7 @@ export const usersAdmin = [
         name: 'Варя Смирнова',
         nick: 'Irinka85',
         email: 'irka85@gmail.com',
-        activity: '2017-02-24T13:30:45+00:00',
+        activity: '2017-02-24T13:30:45+03:00',
         status: 'removed'
     },
 ];

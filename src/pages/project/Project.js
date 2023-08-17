@@ -74,7 +74,7 @@ const Project = () => {
         console.log(mapTo);
         commentsArray = findAndAddAnswer(mapTo, commentsArray, levelFrom, 1, []);
         console.log(commentsArray);
-        setProject({...project, comments: commentsArray});
+        setProject({ ...project, comments: commentsArray });
         setAnswerTo([]);
         setCommentAnswerValue('');
     }
@@ -87,19 +87,104 @@ const Project = () => {
             elMap.push(i);
             currMap = elMap;
 
-            if(mapTo.toString() == currMap.toString()) {
-                console.log(item);
+            if (mapTo.toString() == currMap.toString()) {
+
                 const comment = {
                     user: usersAdmin[0],
                     comment: commentAnswerValue,
+                    created: dayjs().format('YYYY-MM-DD[T]HH:mm:ssZ'),
                     answers: [],
                 }
                 item.answers.push(comment);
                 return true;
             }
-            console.log(currMap);
-            console.log(item.answers.length);
+
             if (mapTo[0] === currMap[0] && item.answers.length) findAndAddAnswer(mapTo, item.answers, level, currLevel + 1, currMap)
+        });
+
+        return commentsArr;
+    }
+
+    //commentOption
+    const [commentOption, setCommentOption] = useState([]);
+    const handleCommentOption = (map) => {
+        map.toString() === commentOption.toString() ? setCommentOption([]) : setCommentOption(map);
+    }
+
+    //commentsEditInput
+    const [commentEditValue, setCommentEditValue] = useState('');
+    const handleCommentEditValue = (e) => {
+        const newValue = e.target.value;
+        setCommentEditValue(newValue);
+    }
+
+    //comment edit
+    const [editTo, setEditTo] = useState([]);
+    const handleEditTo = (map, text) => {
+        map.toString() === editTo.toString() ? setEditTo([]) : setEditTo(map);
+        setCommentEditValue(text);
+        setCommentOption([]);
+    }
+
+    //editComment
+    const handleCommentEdit = (levelFrom, indexFrom, mapTo) => {
+        let commentsArray = comments.slice();
+
+        commentsArray = findAndEdit(mapTo, commentsArray, levelFrom, 1, []);
+
+        setProject({ ...project, comments: commentsArray });
+        setEditTo([]);
+        setCommentEditValue('');
+    }
+
+    const findAndEdit = (mapTo, commentsArr, level, currLevel, currMap) => {
+        if (!currLevel) currLevel = 1;
+
+        commentsArr.find((item, i) => {
+            const elMap = currMap.slice(0, currLevel - 1);
+            elMap.push(i);
+            currMap = elMap;
+
+            if (mapTo.toString() == currMap.toString()) {
+                item.comment = commentEditValue;
+                item.edit = dayjs().format('YYYY-MM-DD[T]HH:mm:ssZ');
+                return true;
+            }
+
+            if (mapTo[0] === currMap[0] && item.answers.length) findAndEdit(mapTo, item.answers, level, currLevel + 1, currMap)
+        });
+
+        return commentsArr;
+    }
+
+    //delete comment
+    const commentDelete = (levelFrom, indexFrom, mapTo) => {
+        let commentsArray = comments.slice();
+
+        console.log(levelFrom, indexFrom, mapTo);
+        commentsArray = findAndDelete(mapTo, commentsArray, levelFrom, 1, []);
+        
+        setProject({ ...project, comments: commentsArray });
+        setCommentOption([]);
+    }
+
+    const findAndDelete = (mapTo, commentsArr, level, currLevel, currMap) => {
+        if (!currLevel) currLevel = 1;
+
+        commentsArr.find((item, i) => {
+            const elMap = currMap.slice(0, currLevel - 1);
+            elMap.push(i);
+            currMap = elMap;
+
+            if (mapTo.toString() == currMap.toString()) {
+                item.user = [];
+                item.deleted = dayjs().format('YYYY-MM-DD[T]HH:mm:ssZ');
+                item.comment = 'The comment was deleted';
+                
+                return true;
+            }
+
+            if (mapTo[0] === currMap[0] && item.answers.length) findAndDelete(mapTo, item.answers, level, currLevel + 1, currMap)
         });
 
         return commentsArr;
@@ -139,7 +224,7 @@ const Project = () => {
                                     <div className="project__Icon">
                                         <img src={CommentsIcon} alt="" />
                                     </div>
-                                    0
+                                    {commentsCount}
                                 </div>
                             </div>
                             <div class="project__created">
@@ -164,6 +249,14 @@ const Project = () => {
                                     answerValue={commentAnswerValue}
                                     onAnswerChange={handleCommentAnswerValue}
                                     onAnswerSubmit={handleCommentAnswer}
+                                    commentOption={commentOption}
+                                    handleCommentOption={handleCommentOption}
+                                    commentEditValue={commentEditValue}
+                                    handleCommentEditValue={handleCommentEditValue}
+                                    editTo={editTo}
+                                    handleEditTo={handleEditTo}
+                                    handleCommentEdit={handleCommentEdit}
+                                    onDelete={commentDelete}
                                 />
                             </div>
                         )}

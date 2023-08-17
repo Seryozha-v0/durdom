@@ -40,10 +40,10 @@
 
     &__author {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
     }
 
-    
+
     &__profile {
         display: flex;
         flex-direction: column;
@@ -66,14 +66,14 @@
 
     &__name {
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 500;
         line-height: 21px;
         color: var(--black);
     }
 
     &__activity {
         font-size: 14px;
-        font-weight: 500;
+        font-weight: 400;
         color: var(--gray-700);
     }
 
@@ -100,12 +100,30 @@
         padding: 0;
         width: 24px;
         height: 24px;
+        cursor: pointer;
 
         img {
             width: 100%;
             height: 100%;
             object-fit: contain;
         }
+    }
+
+    &__optionsMenu {
+        position: relative;
+    }
+
+    &__optionItem {
+        margin-bottom: 8px;
+        display: block;
+        width: 100%;
+        text-align-last: left;
+        font-size: 14px;
+        font-weight: 500;
+        border: none;
+        color: var(--gray-400);
+        background: none;
+        cursor: pointer;
     }
 
     &__answerFor {
